@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reveal Video</title>
+    <style>
+        /* Hide the video and audio initially */
+        #videoContainer {
+            display: none;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        /* Button styling */
+        .ban-butonu {
+            background-color: rgb(163, 13, 13);
+            color: white;
+            border: none;
+            height: 33px;
+            width: 305px;
+            border-radius: 2px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+            transition: 0.5s;
+            position: relative;
+            top: 150px;
+            left: 90px;
+        }
+
+        .ban-butonu:hover {
+            background-color: red;
+            scale: 1.1;
+            rotate: 1deg;
+        }
+
+        /* Mute button styling */
+        .mute-button {
+            display: none; /* Hidden initially */
+            margin-top: 20px;
+            background-color: black;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        /* Rotating animation */
+        @keyframes abone-olundu {
+            from {
+                rotate: 0deg;
+            }
+            to {
+                rotate: 360deg;
+            }
+        }
+
+        /* Other styles */
+        body {
+            background-size: cover;
+            background-repeat: no-repeat;
+            margin: 0;
+            height: 100vh;
+            background-image: linear-gradient(rgb(0, 0, 0) 45%, crimson);
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .back-to-discord {
+            font-size: 20px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            color: white;
+            text-decoration: none;
+            position: relative;
+            top: 0;
+            display: block;
+        }
+
+        .content {
+            display: block; /* Grouping all elements to hide */
+        }
+
+        .discord-text {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            color: rgb(188, 22, 22);
+            font-size: 45px;
+            position: relative;
+            top: 25px;
+        }
+
+        .discord-text2 {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            color: rgb(188, 22, 22);
+            font-size: 25px;
+            position: relative;
+            top: 40px;
+        }
+
+        .discord-img {
+            height: 250px;
+            width: 250px;
+            position: relative;
+            top: 100px;
+            animation-name: abone-olundu;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+
+    <a class="back-to-discord" href="Main.html">Back to Discord</a>
+
+    <div class="content">
+        <p class="discord-text">불화 아니 진짜</p>
+        <p class="discord-text2">2600만 국민만큼 나라에는 관심도 없으니까 김영울이 엄마 엿 먹어라.</p>
+        <img class="discord-img" src="kim.png" alt="">
+        <button class="ban-butonu" id="ban-butonu">Nuke America</button>
+    </div>
+
+    <!-- Video & Audio Container -->
+    <div id="videoContainer">
+        <video id="nukeVideo" width="960" height="540" controls>
+            <source src="Nuke.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <audio id="nukeAudio">
+            <source src="Nuke.m4a" type="audio/mp4">
+            Your browser does not support the audio tag.
+        </audio>
+        <button id="muteButton" class="mute-button">Mute</button>
+    </div>
+
+    <script>
+        document.getElementById("ban-butonu").addEventListener("click", function() {
+            var videoContainer = document.getElementById("videoContainer");
+            var video = document.getElementById("nukeVideo");
+            var audio = document.getElementById("nukeAudio");
+            var content = document.querySelector(".content");
+            var muteButton = document.getElementById("muteButton");
+
+            // Hide everything except the back link
+            content.style.display = "none";  
+            
+            // Show the video and mute button
+            videoContainer.style.display = "block";
+            muteButton.style.display = "inline-block";
+
+            // Play video and audio
+            video.play();
+            audio.play();
+        });
+
+        // Mute/Unmute Button Functionality
+        document.getElementById("muteButton").addEventListener("click", function() {
+            var audio = document.getElementById("nukeAudio");
+
+            if (audio.muted) {
+                audio.muted = false;
+                this.textContent = "Mute";
+            } else {
+                audio.muted = true;
+                this.textContent = "Unmute";
+            }
+        });
+    </script>
+
+</body>
+</html>
